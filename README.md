@@ -8,7 +8,7 @@ Pushover when someone enters a discord channel
 
 ### Required Bot Permissions
 
--[x] Manage Channels
+- [x] Manage Channels
 
 ## Set envronment variables
 
