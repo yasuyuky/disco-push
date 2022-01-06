@@ -1,6 +1,6 @@
 # disco-push
 
-Pushover when someone enters a discord channel
+[Pushover][pushover] notification when someone enters a [Discord][discord] channel
 
 # Usage
 
@@ -22,3 +22,6 @@ Pushover when someone enters a discord channel
 ```console
 python disco-push.py
 ```
+
+[pushover]: https://pushover.net
+[discord]: https://discord.gg
