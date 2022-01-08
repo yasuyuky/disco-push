@@ -1,8 +1,10 @@
+import asyncio
 import discord
 import os
 import requests
 
-client = discord.Client()
+loop = asyncio.get_event_loop()
+client = discord.Client(loop=loop)
 CHANNEL_NAME = os.environ['CHANNEL_NAME']
 PUSHOVER_URL = "https://api.pushover.net/1/messages.json"
 PUSHOVER_USER = os.environ['PUSHOVER_USER']
@@ -29,4 +31,9 @@ async def on_voice_state_update(member, before, after):
 
 
 if __name__ == '__main__':
-    client.run(os.environ["DISCORD_BOT_TOKEN"])
+    try:
+        loop.run_until_complete(client.start(os.environ["DISCORD_BOT_TOKEN"]))
+    except KeyboardInterrupt:
+        loop.run_until_complete(client.close())
+    finally:
+        loop.close()
