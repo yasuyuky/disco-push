@@ -32,8 +32,8 @@ async def on_voice_state_update(member, before, after):
             print(f"{member.name} joined {after.channel.name}")
             requests.post(PUSHOVER_URL,
                           data={
-                              "token": channel.pushover_token,
-                              "user": channel.pushover_user,
+                              "token": channel["pushover_token"],
+                              "user": channel["pushover_user"],
                               "message": f"{member.name} joined the channel."
                           })
 
