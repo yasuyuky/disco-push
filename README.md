@@ -10,12 +10,16 @@
 
 - [x] Manage Channels
 
-## Set envronment variables
+## Prepare a config file
 
-- `DISCORD_BOT_TOKEN`
-- `CHANNEL_ID`
-- `PUSHOVER_USER`
-- `PUSHOVER_TOKEN`
+```toml
+discord_bot_token = "YOUR_DISCORD_BOT_TOKEN"
+
+[[channel]]
+channel_id = YOUR_CHANNEL_ID
+pushover_user = "YOUR_PUSHOVER_USER"
+pushover_token = "YOUR_PUSHOVER_TOKEN"
+```
 
 ## Execute
 
