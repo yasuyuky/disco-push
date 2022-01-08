@@ -5,7 +5,7 @@ import requests
 
 loop = asyncio.get_event_loop()
 client = discord.Client(loop=loop)
-CHANNEL_NAME = os.environ['CHANNEL_NAME']
+CHANNEL_ID = int(os.environ['CHANNEL_ID'])
 PUSHOVER_URL = "https://api.pushover.net/1/messages.json"
 PUSHOVER_USER = os.environ['PUSHOVER_USER']
 PUSHOVER_TOKEN = os.environ['PUSHOVER_TOKEN']
@@ -20,7 +20,7 @@ async def on_ready():
 @client.event
 async def on_voice_state_update(member, before, after):
     if before.channel != after.channel:
-        if after.channel and after.channel.name == CHANNEL_NAME:
+        if after.channel and after.channel.id == CHANNEL_ID:
             print(f"{member.name} joined {after.channel.name}")
             requests.post(PUSHOVER_URL,
                           data={

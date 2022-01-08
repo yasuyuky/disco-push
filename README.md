@@ -13,7 +13,7 @@
 ## Set envronment variables
 
 - `DISCORD_BOT_TOKEN`
-- `CHANNEL_NAME`
+- `CHANNEL_ID`
 - `PUSHOVER_USER`
 - `PUSHOVER_TOKEN`
 
