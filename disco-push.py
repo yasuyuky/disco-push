@@ -17,8 +17,7 @@ CH_PREFIX = os.environ.get("CH_PREFIX", "(Pushing)")
 async def on_ready():
     for channel in client.get_all_channels():
         print(f"{channel.name} - {channel.id}")
-    for cid in CHANNELS:
-        c = CHANNELS[cid]
+    for cid, c in CHANNELS.items():
         c["channel"] = client.get_channel(cid)
         c["original_name"] = c["channel"].name
     await wait_for(c["channel"].edit(name=c["channel"].name + CH_PREFIX), 5.0)
@@ -40,8 +39,7 @@ async def on_voice_state_update(member, before, after):
 
 
 async def restore_channel():
-    for cid in CHANNELS:
-        c = CHANNELS[cid]
+    for c in CHANNELS.values():
         if c["channel"] and c["original_name"]:
             await wait_for(c["channel"].edit(name=c["original_name"]), 5.0)
             print("CHANNEL NAME RESTORED")
