@@ -2,7 +2,6 @@ import argparse
 import asyncio
 from asyncio.tasks import wait_for
 import discord
-import os
 import requests
 import toml
 
@@ -10,7 +9,6 @@ loop = asyncio.get_event_loop()
 client = discord.Client(loop=loop)
 CHANNELS = {}
 PUSHOVER_URL = "https://api.pushover.net/1/messages.json"
-CH_PREFIX = os.environ.get("CH_PREFIX", "(Pushing)")
 
 
 @client.event
@@ -20,7 +18,8 @@ async def on_ready():
     for cid, c in CHANNELS.items():
         c["channel"] = client.get_channel(cid)
         c["original_name"] = c["channel"].name
-    await wait_for(c["channel"].edit(name=c["channel"].name + CH_PREFIX), 5.0)
+        ch_prefix = c.get("ch_prefix", "(Pushing)")
+    await wait_for(c["channel"].edit(name=c["channel"].name + ch_prefix), 5.0)
     print("READY")
 
 
