@@ -19,6 +19,7 @@ discord_bot_token = "YOUR_DISCORD_BOT_TOKEN"
 channel_id = YOUR_CHANNEL_ID
 pushover_user = "YOUR_PUSHOVER_USER"
 pushover_token = "YOUR_PUSHOVER_TOKEN"
+ignore_names = ["IGNORE_MEMBER_NAMES"]
 ```
 
 ## Execute
