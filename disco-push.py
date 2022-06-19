@@ -28,7 +28,7 @@ async def on_voice_state_update(member, before, after):
     if before.channel != after.channel:
         if after.channel and after.channel.id in CHANNELS:
             channel = CHANNELS[after.channel.id]
-            if member.name in channel["ignore_names"]: return
+            if member.name in channel.get("ignore_names", []): return
             print(f"{member.name} joined {after.channel.name}")
             requests.post(PUSHOVER_URL,
                           data={
