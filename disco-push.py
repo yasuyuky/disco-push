@@ -36,6 +36,16 @@ async def on_voice_state_update(member, before, after):
                               "user": channel["pushover_user"],
                               "message": f"{member.name} joined the channel."
                           })
+        elif before.channel and before.channel.id in CHANNELS:
+            channel = CHANNELS[before.channel.id]
+            if member.name in channel.get("ignore_names", []): return
+            print(f"{member.name} leaved {before.channel.name}")
+            requests.post(PUSHOVER_URL,
+                          data={
+                              "token": channel["pushover_token"],
+                              "user": channel["pushover_user"],
+                              "message": f"{member.name} leaved the channel."
+                          })
 
 
 async def restore_channel():
